@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# Use this script in place of /usr/bin/instruments and the
+# 1 second delay will go away.
 
 LIB_PATH=$(cd `dirname $0`; pwd)
 XCODE_PATH=$(xcode-select --print-path)
