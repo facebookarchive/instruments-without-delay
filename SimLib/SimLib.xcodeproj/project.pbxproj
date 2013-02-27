@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		281BA0161662CC13000DF4AB /* dyld-interposing.h in Headers */ = {isa = PBXBuildFile; fileRef = 281B9F901662CC13000DF4AB /* dyld-interposing.h */; };
 		2862840E16DD463300EE287B /* SimLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 2862840C16DD463300EE287B /* SimLib.m */; };
-		2862844516DD5B3D00EE287B /* dyld-interposing.h in Headers */ = {isa = PBXBuildFile; fileRef = 2862844216DD5B3D00EE287B /* dyld-interposing.h */; };
 		28D7A4A116DDAC4400569B9E /* ArrayOfStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 28D7A49F16DDAC4400569B9E /* ArrayOfStrings.h */; };
 		28D7A4A216DDAC4400569B9E /* ArrayOfStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7A4A016DDAC4400569B9E /* ArrayOfStrings.m */; };
 /* End PBXBuildFile section */
@@ -144,7 +143,7 @@
 		281B9F0E1662CAF5000DF4AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Fred Potter";
 			};
 			buildConfigurationList = 281B9F111662CAF5000DF4AB /* Build configuration list for PBXProject "SimLib" */;
@@ -223,6 +222,7 @@
 		281B9F291662CAF5000DF4AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -233,6 +233,7 @@
 		281B9F2A1662CAF5000DF4AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
