@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:TestApp/TestApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SimLib/SimLib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:InstrumentsShim/InstrumentsShim.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ScriptAgentShim/ScriptAgentShim.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Common"
+      name = "Common">
+      <FileRef
+         location = "group:dyld-interposing.h">
+      </FileRef>
+      <FileRef
+         location = "group:ArrayOfStrings.h">
+      </FileRef>
+      <FileRef
+         location = "group:ArrayOfStrings.m">
+      </FileRef>
+   </Group>
+</Workspace>

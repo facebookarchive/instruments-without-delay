@@ -1,0 +1,6 @@
+// Force output to get into 'Debug' rather than 'Debug-iphonesimulator'
+EFFECTIVE_PLATFORM_NAME =
+
+// Force a simulator build.
+SDKROOT = iphonesimulator
+
