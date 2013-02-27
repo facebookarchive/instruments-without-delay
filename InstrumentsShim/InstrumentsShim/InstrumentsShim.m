@@ -1,26 +1,9 @@
 
 #import <Foundation/Foundation.h>
-#import <ApplicationServices/ApplicationServices.h>
-#import <objc/runtime.h>
-#import <objc/message.h>
 #import <spawn.h>
-#import <mach-o/dyld.h>
 
 #import "../../Common/ArrayOfStrings.h"
 #import "../../Common/dyld-interposing.h"
-
-NSString *AbsoluteExecutablePath(void)
-{
-  char execRelativePath[1024] = {0};
-  uint32_t execRelativePathSize = sizeof(execRelativePath);
-  
-  _NSGetExecutablePath(execRelativePath, &execRelativePathSize);
-  
-  char execAbsolutePath[1024] = {0};
-  assert(realpath((const char *)execRelativePath, execAbsolutePath) != NULL);
-  
-  return [NSString stringWithUTF8String:execAbsolutePath];
-}
 
 static int _posix_spawn(pid_t *pid,
                         const char *path,
