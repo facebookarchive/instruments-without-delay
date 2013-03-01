@@ -28,20 +28,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "281B9F161662CAF5000DF4AB"
-               BuildableName = "SimLib.dylib"
-               BlueprintName = "SimLib"
-               ReferencedContainer = "container:../SimLib/SimLib.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "2862841916DD4E4A00EE287B"
                BuildableName = "TestApp.app"
                BlueprintName = "TestApp"
@@ -60,6 +46,20 @@
                BuildableName = "ScriptAgentShim.dylib"
                BlueprintName = "ScriptAgentShim"
                ReferencedContainer = "container:../ScriptAgentShim/ScriptAgentShim.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "281B9F161662CAF5000DF4AB"
+               BuildableName = "SimLib.dylib"
+               BlueprintName = "SimShim"
+               ReferencedContainer = "container:../SimShim/SimShim.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

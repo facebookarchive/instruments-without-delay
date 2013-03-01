@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		281BA0161662CC13000DF4AB /* dyld-interposing.h in Headers */ = {isa = PBXBuildFile; fileRef = 281B9F901662CC13000DF4AB /* dyld-interposing.h */; };
-		2862840E16DD463300EE287B /* SimLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 2862840C16DD463300EE287B /* SimLib.m */; };
-		28D7A4A116DDAC4400569B9E /* ArrayOfStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 28D7A49F16DDAC4400569B9E /* ArrayOfStrings.h */; };
-		28D7A4A216DDAC4400569B9E /* ArrayOfStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7A4A016DDAC4400569B9E /* ArrayOfStrings.m */; };
+		2834798D16E177BF003C3B77 /* SimShim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834798C16E177BF003C3B77 /* SimShim.m */; };
+		2834799016E177D9003C3B77 /* ArrayOfStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 2834798E16E177D9003C3B77 /* ArrayOfStrings.h */; };
+		2834799116E177D9003C3B77 /* ArrayOfStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834798F16E177D9003C3B77 /* ArrayOfStrings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,11 +20,9 @@
 		281B9F1E1662CAF5000DF4AB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		281B9F1F1662CAF5000DF4AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		281B9F901662CC13000DF4AB /* dyld-interposing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dyld-interposing.h"; sourceTree = "<group>"; };
-		2862840916DD462900EE287B /* SimLib.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SimLib.xcconfig; sourceTree = "<group>"; };
-		2862840C16DD463300EE287B /* SimLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimLib.m; sourceTree = "<group>"; };
-		2862844216DD5B3D00EE287B /* dyld-interposing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dyld-interposing.h"; sourceTree = "<group>"; };
-		28D7A49F16DDAC4400569B9E /* ArrayOfStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayOfStrings.h; sourceTree = "<group>"; };
-		28D7A4A016DDAC4400569B9E /* ArrayOfStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayOfStrings.m; sourceTree = "<group>"; };
+		2834798C16E177BF003C3B77 /* SimShim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimShim.m; sourceTree = "<group>"; };
+		2834798E16E177D9003C3B77 /* ArrayOfStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayOfStrings.h; sourceTree = "<group>"; };
+		2834798F16E177D9003C3B77 /* ArrayOfStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayOfStrings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,9 +39,7 @@
 		281B9F0C1662CAF5000DF4AB = {
 			isa = PBXGroup;
 			children = (
-				2862844116DD5B3D00EE287B /* Common */,
-				2862840A16DD463300EE287B /* SimLib */,
-				2862840916DD462900EE287B /* SimLib.xcconfig */,
+				2834798B16E177BF003C3B77 /* SimShim */,
 				281B9F391662CC13000DF4AB /* Common */,
 				281B9F191662CAF5000DF4AB /* Frameworks */,
 				281B9F181662CAF5000DF4AB /* Products */,
@@ -80,29 +76,20 @@
 		281B9F391662CC13000DF4AB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2834798E16E177D9003C3B77 /* ArrayOfStrings.h */,
+				2834798F16E177D9003C3B77 /* ArrayOfStrings.m */,
 				281B9F901662CC13000DF4AB /* dyld-interposing.h */,
 			);
 			name = Common;
 			path = ../Common;
 			sourceTree = "<group>";
 		};
-		2862840A16DD463300EE287B /* SimLib */ = {
+		2834798B16E177BF003C3B77 /* SimShim */ = {
 			isa = PBXGroup;
 			children = (
-				2862840C16DD463300EE287B /* SimLib.m */,
+				2834798C16E177BF003C3B77 /* SimShim.m */,
 			);
-			path = SimLib;
-			sourceTree = "<group>";
-		};
-		2862844116DD5B3D00EE287B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				28D7A49F16DDAC4400569B9E /* ArrayOfStrings.h */,
-				28D7A4A016DDAC4400569B9E /* ArrayOfStrings.m */,
-				2862844216DD5B3D00EE287B /* dyld-interposing.h */,
-			);
-			name = Common;
-			path = ../Common;
+			path = SimShim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,16 +100,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				281BA0161662CC13000DF4AB /* dyld-interposing.h in Headers */,
-				28D7A4A116DDAC4400569B9E /* ArrayOfStrings.h in Headers */,
+				2834799016E177D9003C3B77 /* ArrayOfStrings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		281B9F161662CAF5000DF4AB /* SimLib */ = {
+		281B9F161662CAF5000DF4AB /* SimShim */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 281B9F281662CAF5000DF4AB /* Build configuration list for PBXNativeTarget "SimLib" */;
+			buildConfigurationList = 281B9F281662CAF5000DF4AB /* Build configuration list for PBXNativeTarget "SimShim" */;
 			buildPhases = (
 				281B9F131662CAF5000DF4AB /* Sources */,
 				281B9F141662CAF5000DF4AB /* Frameworks */,
@@ -132,7 +119,7 @@
 			);
 			dependencies = (
 			);
-			name = SimLib;
+			name = SimShim;
 			productName = Sim64Lib;
 			productReference = 281B9F171662CAF5000DF4AB /* SimLib.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
@@ -146,7 +133,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Fred Potter";
 			};
-			buildConfigurationList = 281B9F111662CAF5000DF4AB /* Build configuration list for PBXProject "SimLib" */;
+			buildConfigurationList = 281B9F111662CAF5000DF4AB /* Build configuration list for PBXProject "SimShim" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -158,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				281B9F161662CAF5000DF4AB /* SimLib */,
+				281B9F161662CAF5000DF4AB /* SimShim */,
 			);
 		};
 /* End PBXProject section */
@@ -168,8 +155,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2862840E16DD463300EE287B /* SimLib.m in Sources */,
-				28D7A4A216DDAC4400569B9E /* ArrayOfStrings.m in Sources */,
+				2834798D16E177BF003C3B77 /* SimShim.m in Sources */,
+				2834799116E177D9003C3B77 /* ArrayOfStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +231,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		281B9F111662CAF5000DF4AB /* Build configuration list for PBXProject "SimLib" */ = {
+		281B9F111662CAF5000DF4AB /* Build configuration list for PBXProject "SimShim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				281B9F261662CAF5000DF4AB /* Debug */,
@@ -253,7 +240,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		281B9F281662CAF5000DF4AB /* Build configuration list for PBXNativeTarget "SimLib" */ = {
+		281B9F281662CAF5000DF4AB /* Build configuration list for PBXNativeTarget "SimShim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				281B9F291662CAF5000DF4AB /* Debug */,

@@ -36,7 +36,7 @@ static int _posix_spawn(pid_t *pid,
   // to handle setting up all the right DYLD_ paths so the iOS versions of libs get used.
   if ([[[NSString stringWithUTF8String:path] lastPathComponent] isEqualToString:@"sim"]) {
     char *addedEnvp[] = {
-      (char *)[[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=%s/SimLib.dylib", getenv("LIB_PATH")] UTF8String],
+      (char *)[[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=%s/SimShim.dylib", getenv("LIB_PATH")] UTF8String],
       (char *)[[NSString stringWithFormat:@"LIB_PATH=%s", getenv("LIB_PATH")] UTF8String],
       NULL,
     };

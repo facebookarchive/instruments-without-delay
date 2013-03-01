@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TestApp/TestApp.xcodeproj">
+      location = "group:SimShim/SimShim.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SimLib/SimLib.xcodeproj">
+      location = "group:TestApp/TestApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:InstrumentsShim/InstrumentsShim.xcodeproj">
