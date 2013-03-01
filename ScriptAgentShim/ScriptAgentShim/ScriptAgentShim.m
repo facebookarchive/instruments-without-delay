@@ -127,5 +127,6 @@ __attribute__((constructor)) static void EntryPoint()
                              @selector(performTaskWithPath:arguments:timeout:),
                              (IMP)UIAHost_performTaskWithpath);
   
+  // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
 }

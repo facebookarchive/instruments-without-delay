@@ -37,6 +37,7 @@ static int _posix_spawn(pid_t *pid,
     }
   }
   
+  // sim seems to run 'which' at some point - not sure on why, but we don't want to mess with it.
   BOOL isNotWhich = ![[NSString stringWithUTF8String:path] isEqualToString:@"/usr/bin/which"];
   
   if (isNotWhich && shouldInsertLib) {
@@ -63,5 +64,6 @@ DYLD_INTERPOSE(_posix_spawn, posix_spawn);
 
 __attribute__((constructor)) static void EntryPoint(void);
 __attribute__((constructor)) static void EntryPoint(void) {
+  // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
 }

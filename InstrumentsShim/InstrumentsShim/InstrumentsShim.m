@@ -31,6 +31,9 @@ static int _posix_spawn(pid_t *pid,
   char **newEnvp = NULL;
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   
+  // ScriptAgent is an iOS Simulator binary.  Instruments uses a helper program called 'sim'
+  // (.../Platforms/iPhoneSimulator.platform/usr/bin/sim) to launch iOS sim binaries.  It seems
+  // to handle setting up all the right DYLD_ paths so the iOS versions of libs get used.
   if ([[[NSString stringWithUTF8String:path] lastPathComponent] isEqualToString:@"sim"]) {
     char *addedEnvp[] = {
       (char *)[[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=%s/SimLib.dylib", getenv("LIB_PATH")] UTF8String],
@@ -56,5 +59,6 @@ DYLD_INTERPOSE(_posix_spawn, posix_spawn);
 
 __attribute__((constructor)) static void EntryPoint()
 {
+  // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
 }
