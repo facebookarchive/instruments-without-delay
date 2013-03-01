@@ -1,13 +1,25 @@
 //
-// iOS-Simulator-Dylib.xcconfig - a workaround to build iOS dynamic libraries in Xcode.
+// Copyright 2013 Facebook
 //
-// Apple doesn't provide Xcode project templates for iOS dylibs.  There are workarounds for this
-// ( http://sumgroup.wikispaces.com/iPhone_Dynamic_Library ), but they require patching your Xcode
-// install.
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 
-_IOS_SDK_VERSION = 6.0
-_IOS_SDK_VERSION_EXPANDED = 60000
+//
+// Trick Xcode into building this as a dynamic lib for iOS.
+//
+
+_IOS_SDK_VERSION = 6.1
+_IOS_SDK_VERSION_EXPANDED = 61000
 
 // Must be set to 'macosx' or you'll get an error:
 //    target specifies product type 'com.apple.product-type.library.dynamic', but there's no
@@ -30,10 +42,10 @@ VALID_ARCHS = i386
 //    availability macros think we're building for OS X (and, therefore, cannot use iOS-specific
 //    classes).  Setting __IPHONE_OS_VERSION_MIN_REQUIRED convinces the availability macros we're
 //    building for iOS.
-_OTHER_CFLAGS = -fobjc-abi-version=2 -D__IPHONE_OS_VERSION_MIN_REQUIRED=$(_IOS_SDK_VERSION_EXPANDED) -framework Foundation
+_OTHER_CFLAGS = -fobjc-abi-version=2 -D__IPHONE_OS_VERSION_MIN_REQUIRED=$(_IOS_SDK_VERSION_EXPANDED)
 
 _SDK_PATH = $(PLATFORM_DIR)/../iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator$(_IOS_SDK_VERSION).sdk
-_STANDARD_OPTIONS = -isysroot $(_SDK_PATH) -F$(_SDK_PATH)/Developer/Library/Frameworks -F$(_SDK_PATH)/System/Library/Frameworks -I$(_SDK_PATH)/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/../iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.0.sdk/System/Library/Frameworks/Foundation.framework/Headers
+_STANDARD_OPTIONS = -isysroot $(_SDK_PATH) -F$(_SDK_PATH)/Developer/Library/Frameworks -F$(_SDK_PATH)/System/Library/Frameworks
 
-OTHER_CFLAGS = $(_STANDARD_OPTIONS) $(_OTHER_CFLAGS) -v
+OTHER_CFLAGS = $(_STANDARD_OPTIONS) $(_OTHER_CFLAGS)
 OTHER_LDFLAGS = $(_STANDARD_OPTIONS)
