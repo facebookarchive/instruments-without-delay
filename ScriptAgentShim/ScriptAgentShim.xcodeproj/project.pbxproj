@@ -104,7 +104,7 @@
 			dependencies = (
 			);
 			name = ScriptAgentShim;
-			productName = UIAutomationShim;
+			productName = ScriptAgentShim;
 			productReference = 286283D816DD198400EE287B /* ScriptAgentShim.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
