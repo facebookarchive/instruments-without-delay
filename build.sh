@@ -5,11 +5,22 @@ cd `dirname $0`
 
 BUILD_OUTPUT_DIR=$(echo `pwd`/build)
 
+# We're using a hack to trick ScriptAgentShim into building as a dylib for
+# the iOS simulator.  Part of that requires us to specify paths to the
+# SDK dirs ourselves and so we need to know the version numbers for the
+# newest installed SDK.  See ScriptAgentShim.xcconfig for more info.
+_IOS_SDK_VERSION=$(xcodebuild -showsdks | grep iphonesimulator | \
+  tail -n 1 | perl -ne '/iphonesimulator(.*?)$/ && print $1')
+_IOS_SDK_VERSION_EXPANDED=$(xcodebuild -showsdks | grep iphonesimulator | \
+  tail -n 1 | perl -ne '/iphonesimulator(\d)\.(\d)$/ && print "${1}${2}000"')
+
 xcodebuild \
   -workspace instruments-without-delay.xcworkspace \
   -scheme instruments-without-delay \
   -configuration Release \
-  CONFIGURATION_BUILD_DIR=$BUILD_OUTPUT_DIR
+  CONFIGURATION_BUILD_DIR=$BUILD_OUTPUT_DIR \
+  _IOS_SDK_VERSION=$_IOS_SDK_VERSION \
+  _IOS_SDK_VERSION_EXPANDED=$_IOS_SDK_VERSION_EXPANDED
 
 cp instruments $BUILD_OUTPUT_DIR/instruments
 
