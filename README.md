@@ -2,6 +2,9 @@
 
 __instruments-without-delay__ fixes the 1-second delay problem when using `UIAHost.performTaskWithPathArgumentsTimeout` inside of Apple's Instruments / UIAutomation tool.  `performTaskWithPathArgumentsTimeout` would normally take 1 second to respond regardless of how fast the task finishes.
 
+If you're using Instruments to drive UI integration tests (e.g. with [ios-driver](https://github.com/freynaud/ios-driver)), this hack can significantly speed up testing.
+
+
 ### Usage
 
 Build and run the test:
