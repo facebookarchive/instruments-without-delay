@@ -62,7 +62,6 @@ Error:
 }
 DYLD_INTERPOSE(_posix_spawn, posix_spawn);
 
-__attribute__((constructor)) static void EntryPoint(void);
 __attribute__((constructor)) static void EntryPoint(void) {
   // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
