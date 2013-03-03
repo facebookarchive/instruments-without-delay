@@ -84,7 +84,7 @@ NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
   [task waitUntilExit];
   
   while (standardOutput == nil || standardError == nil) {
-    CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.1, YES);
+    CFRunLoopRun();
   }
   
   [[NSNotificationCenter defaultCenter] removeObserver:stdoutObserver];
@@ -123,6 +123,7 @@ id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, id timeo
 
 __attribute__((constructor)) static void EntryPoint()
 {
+  // UIAHost is from UIAutomation.framework
   SwizzleSelectorForFunction(NSClassFromString(@"UIAHost"),
                              @selector(performTaskWithPath:arguments:timeout:),
                              (IMP)UIAHost_performTaskWithpath);
