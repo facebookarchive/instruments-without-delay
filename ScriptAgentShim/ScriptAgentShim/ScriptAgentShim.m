@@ -44,7 +44,7 @@
 - (void)waitUntilExit;
 @end
 
-NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
+static NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
   NSPipe *stdoutPipe = [NSPipe pipe];
   NSFileHandle *stdoutHandle = [stdoutPipe fileHandleForReading];
   
@@ -106,7 +106,7 @@ static void SwizzleSelectorForFunction(Class cls, SEL sel, IMP newImp)
   method_exchangeImplementations(originalMethod, newMethod);
 }
 
-id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, id timeout)
+static id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, id timeout)
 {
   NSTask *task = [[[NSTask alloc] init] autorelease];
   [task setLaunchPath:path];
