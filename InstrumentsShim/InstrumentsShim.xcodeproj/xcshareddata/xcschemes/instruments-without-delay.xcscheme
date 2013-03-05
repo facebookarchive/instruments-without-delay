@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "281B9F161662CAF5000DF4AB"
-               BuildableName = "SimLib.dylib"
+               BuildableName = "SimShim.dylib"
                BlueprintName = "SimShim"
                ReferencedContainer = "container:../SimShim/SimShim.xcodeproj">
             </BuildableReference>
