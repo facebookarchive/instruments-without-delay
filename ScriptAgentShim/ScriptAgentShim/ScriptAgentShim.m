@@ -112,6 +112,17 @@ static id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, i
   [task setLaunchPath:path];
   [task setArguments:arguments];
   
+  NSMutableDictionary *environment = [[[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]] autorelease];
+  NSString *envpath = [[NSString stringWithContentsOfFile:@"/etc/paths"
+                                                 encoding:NSUTF8StringEncoding
+                                                    error:NULL]
+                          stringByReplacingOccurrencesOfString:@"\n"
+                                                    withString:@":"];
+  [environment setObject:envpath
+                  forKey:@"PATH"];
+  [environment removeObjectForKey:@"DYLD_ROOT_PATH"];
+  [task setEnvironment:environment];
+
   NSDictionary *output = LaunchTaskAndCaptureOutput(task);
   
   id result = @{@"exitCode": @([task terminationStatus]),
