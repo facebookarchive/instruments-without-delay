@@ -85,7 +85,7 @@ static NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
                                               encoding:NSUTF8StringEncoding
                                                  error:NULL]
                           stringByReplacingOccurrencesOfString:@"\n"
-                                                 withString:@":"];
+                                                    withString:@":"];
   [environment setObject:path
                   forKey:@"PATH"];
   [environment removeObjectForKey:@"DYLD_ROOT_PATH"];
