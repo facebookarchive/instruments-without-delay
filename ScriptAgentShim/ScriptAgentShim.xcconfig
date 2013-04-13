@@ -45,7 +45,7 @@ VALID_ARCHS = i386
 //    building for iOS.
 _OTHER_CFLAGS = -fobjc-abi-version=2 -D__IPHONE_OS_VERSION_MIN_REQUIRED=$(_IOS_SDK_VERSION_EXPANDED)
 
-_SDK_PATH = $(PLATFORM_DIR)/../iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator$(_IOS_SDK_VERSION).sdk
+_SDK_PATH = "$(PLATFORM_DIR)"/../iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator$(_IOS_SDK_VERSION).sdk
 _STANDARD_OPTIONS = -isysroot $(_SDK_PATH) -F$(_SDK_PATH)/Developer/Library/Frameworks -F$(_SDK_PATH)/System/Library/Frameworks
 
 OTHER_CFLAGS = $(_STANDARD_OPTIONS) $(_OTHER_CFLAGS)
