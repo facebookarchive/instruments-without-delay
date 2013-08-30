@@ -14,39 +14,4 @@
 // limitations under the License.
 //
 
-//
-// Trick Xcode into building this as a dynamic lib for iOS.
-//
-
-// These versions must match an installed iPhoneSimulator SDK or the build will fail in Xcode.
-_IOS_SDK_VERSION = 6.1
-_IOS_SDK_VERSION_EXPANDED = 61000
-
-// Must be set to 'macosx' or you'll get an error:
-//    target specifies product type 'com.apple.product-type.library.dynamic', but there's no
-//    such product type for the 'iphonesimulator' platform
-SDKROOT = macosx
-
-ARCHS = i386
-VALID_ARCHS = i386
-
-// -fobjc-abi-version=2
-//    Forces the ObjC 2.0 ABI.  You wouldn't normally set this for an OS X dylib as it's already
-//    implied for all but the oldest releases of OS X.  This is required when building for the
-//    Simulator - otherwise it defaults to v1 and winds up with linker errors.
-//
-// -D__IPHONE_OS_VERSION_MIN_REQUIRED=60000
-//    Makes the availability macros work.  These defines are normally generated from the
-//    -mmacosx-version-min=10.7 or -miphoneos-version-min=6.0 compiler flags, and those flags are
-//    automatically inserted by Xcode given the type of project.  Since this is an OS X dylib
-//    project, Xcode has already inserted "-mmacosx-version-min=10.7" for us which makes all the
-//    availability macros think we're building for OS X (and, therefore, cannot use iOS-specific
-//    classes).  Setting __IPHONE_OS_VERSION_MIN_REQUIRED convinces the availability macros we're
-//    building for iOS.
-_OTHER_CFLAGS = -fobjc-abi-version=2 -D__IPHONE_OS_VERSION_MIN_REQUIRED=$(_IOS_SDK_VERSION_EXPANDED)
-
-_SDK_PATH = "$(PLATFORM_DIR)"/../iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator$(_IOS_SDK_VERSION).sdk
-_STANDARD_OPTIONS = -isysroot $(_SDK_PATH) -F$(_SDK_PATH)/Developer/Library/Frameworks -F$(_SDK_PATH)/System/Library/Frameworks
-
-OTHER_CFLAGS = $(_STANDARD_OPTIONS) $(_OTHER_CFLAGS)
-OTHER_LDFLAGS = $(_STANDARD_OPTIONS)
+#include "../Configurations/iOS-Simulator-Dylib.xcconfig"

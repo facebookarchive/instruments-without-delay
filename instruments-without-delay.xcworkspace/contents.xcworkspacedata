@@ -26,4 +26,14 @@
          location = "group:ArrayOfStrings.m">
       </FileRef>
    </Group>
+   <Group
+      location = "group:../Configurations"
+      name = "Configurations">
+      <FileRef
+         location = "group:../instruments-without-delay/Configurations/ld_dont_link_as_osx.py">
+      </FileRef>
+      <FileRef
+         location = "group:../instruments-without-delay/Configurations/iOS-Simulator-Dylib.xcconfig">
+      </FileRef>
+   </Group>
 </Workspace>
