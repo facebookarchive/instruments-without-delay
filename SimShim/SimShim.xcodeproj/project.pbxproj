@@ -14,7 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		281B9F171662CAF5000DF4AB /* SimLib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = SimLib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		281B9F171662CAF5000DF4AB /* SimShim.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = SimShim.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		281B9F1A1662CAF5000DF4AB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		281B9F1D1662CAF5000DF4AB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		281B9F1E1662CAF5000DF4AB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -49,7 +49,7 @@
 		281B9F181662CAF5000DF4AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				281B9F171662CAF5000DF4AB /* SimLib.dylib */,
+				281B9F171662CAF5000DF4AB /* SimShim.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 			);
 			name = SimShim;
 			productName = Sim64Lib;
-			productReference = 281B9F171662CAF5000DF4AB /* SimLib.dylib */;
+			productReference = 281B9F171662CAF5000DF4AB /* SimShim.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */

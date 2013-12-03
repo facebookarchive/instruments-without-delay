@@ -38,8 +38,8 @@ SDKROOT = macosx
 // OSX specific flags.
 LD = ../Configurations/ld_dont_link_as_osx.py
 
-ARCHS = i386
-VALID_ARCHS = i386
+ARCHS = i386 x86_64
+VALID_ARCHS = i386 x86_64
 
 // -fobjc-abi-version=2
 //    Forces the ObjC 2.0 ABI.  You wouldn't normally set this for an OS X dylib as it's already
