@@ -14,4 +14,10 @@
 // limitations under the License.
 //
 
-#include "../Configurations/iOS-Simulator-Dylib.xcconfig"
+CAID_BASE_SDK_VERSION = latest
+CAID_IPHONEOS_DEPLOYMENT_TARGET = earliest
+
+CAID_LINKS_PATH = $(PROJECT_DIR)/../Vendor/clang-as-ios-dylib/links
+
+LD = $(CAID_LINKS_PATH)/ld-iphonesimulator-$(CAID_BASE_SDK_VERSION)-targeting-$(CAID_IPHONEOS_DEPLOYMENT_TARGET)
+CC = $(CAID_LINKS_PATH)/cc-iphonesimulator-$(CAID_BASE_SDK_VERSION)-targeting-$(CAID_IPHONEOS_DEPLOYMENT_TARGET)
