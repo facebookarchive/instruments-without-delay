@@ -132,7 +132,7 @@
 		286283ED16DD199C00EE287B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Fred Potter";
 			};
 			buildConfigurationList = 286283F016DD199C00EE287B /* Build configuration list for PBXProject "InstrumentsShim" */;
