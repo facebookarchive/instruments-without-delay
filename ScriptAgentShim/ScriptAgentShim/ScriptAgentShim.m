@@ -1,5 +1,5 @@
 //
-// Copyright 2013 Facebook
+// Copyright 2014 Facebook
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
+#import "../../Common/dyld-interposing.h"
+#import "../../Common/SwizzleSelector.h"
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
-#import <objc/message.h>
 
 // NSTask isn't public in the iOS version of the headers, so we include it here.
 @interface NSTask : NSObject
@@ -93,20 +93,7 @@ static NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
   return @{@"stdout" : standardOutput, @"stderr" : standardError};
 }
 
-static void SwizzleSelectorForFunction(Class cls, SEL sel, IMP newImp)
-{
-  Method originalMethod = class_getInstanceMethod(cls, sel);
-  const char *typeEncoding = method_getTypeEncoding(originalMethod);
-  
-  NSString *newSelectorName = [NSString stringWithFormat:@"__%s_%s", class_getName(cls), sel_getName(sel)];
-  SEL newSelector = sel_registerName([newSelectorName UTF8String]);
-  class_addMethod(cls, newSelector, newImp, typeEncoding);
-  
-  Method newMethod = class_getInstanceMethod(cls, newSelector);
-  method_exchangeImplementations(originalMethod, newMethod);
-}
-
-static id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, id timeout)
+static id UIAHost_performTaskWithPath(id self, SEL cmd, id path, id arguments, id timeout)
 {
   NSTask *task = [[[NSTask alloc] init] autorelease];
   [task setLaunchPath:path];
@@ -127,17 +114,28 @@ static id UIAHost_performTaskWithpath(id self, SEL cmd, id path, id arguments, i
   
   id result = @{@"exitCode": @([task terminationStatus]),
                 @"stdout": output[@"stdout"],
-                @"stdout": output[@"stderr"],
+                @"stderr": output[@"stderr"],
                 };
   return result;
 }
 
+// This swizzle is make ScriptAgent way faster, as each call to its logger does a [NSUserDefaults boolForKey:]
+// which in aggregate, takes a bunch of time. (rdar://18062172)
+static BOOL NSUserDefaults_boolForKey(id self, SEL _cmd, NSString *key) {
+  if ([key isEqualToString:@"Verbose"] || [key isEqualToString:@"Debug"] || [key isEqualToString:@"Bridge"]) {
+    return NO;
+  }
+
+  return [self __NSUserDefaults_boolForKey:key];
+}
+
 __attribute__((constructor)) static void EntryPoint()
 {
-  // UIAHost is from UIAutomation.framework
   SwizzleSelectorForFunction(NSClassFromString(@"UIAHost"),
                              @selector(performTaskWithPath:arguments:timeout:),
-                             (IMP)UIAHost_performTaskWithpath);
+                             (IMP)UIAHost_performTaskWithPath);
+
+  SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
   
   // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");

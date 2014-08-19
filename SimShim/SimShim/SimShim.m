@@ -14,55 +14,19 @@
 // limitations under the License.
 //
 
-#import <spawn.h>
-#import "../../Common/dyld-interposing.h"
-#import "../../Common/ArrayOfStrings.h"
+#import "../../Common/SwizzleSelector.h"
 
-static int _posix_spawn(pid_t *pid,
-                        const char *path,
-                        const posix_spawn_file_actions_t *file_actions,
-                        const posix_spawnattr_t *attrp,
-                        char *const argv[],
-                        char *const envp[])
-{
-  int result = 0;
-  char **newEnvp = NULL;
-  BOOL shouldInsertLib = NO;
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
-  for (int i = 0; argv[i] != 0; i++) {
-    NSString *argStr = [NSString stringWithUTF8String:argv[i]];
-    if ([argStr hasSuffix:@"ScriptAgent"]) {
-      shouldInsertLib = YES;
-    }
-  }
-  
-  // sim seems to run 'which' at some point - not sure on why, but we don't want to mess with it.
-  BOOL isNotWhich = ![[NSString stringWithUTF8String:path] isEqualToString:@"/usr/bin/which"];
-  
-  if (isNotWhich && shouldInsertLib) {
-    char *addedEnvp[] = {
-      (char *)[[NSString stringWithFormat:@"DYLD_INSERT_LIBRARIES=%s/ScriptAgentShim.dylib", getenv("LIB_PATH")] UTF8String],
-      NULL,
-    };
-    
-    newEnvp = ArrayOfStringsByAppendingStrings(envp, addedEnvp);
-    
-    result = posix_spawn(pid, path, file_actions, attrp, argv, newEnvp);
-  } else {
-    result = posix_spawn(pid, path, file_actions, attrp, argv, envp);
-  }
-  
-Error:
-  if (newEnvp != NULL) {
-    FreeArrayOfStrings(newEnvp);
-  }
-  [pool release];
-  return result;
+static NSDictionary *IndigoSessionController_additionalEnvironment(id self, SEL _cmd) {
+  NSMutableDictionary *environment = [[self __IndigoSessionController_additionalEnvironment] mutableCopy];
+  NSDictionary *currentEnvironment = [[NSProcessInfo processInfo] environment];
+  environment[@"DYLD_INSERT_LIBRARIES"] = [NSString stringWithFormat:@"%@/DTMobileISShim.dylib", currentEnvironment[@"LIB_PATH"]];
+  environment[@"LIB_PATH"] = currentEnvironment[@"LIB_PATH"];
+  return environment;
 }
-DYLD_INTERPOSE(_posix_spawn, posix_spawn);
 
 __attribute__((constructor)) static void EntryPoint(void) {
+  SwizzleSelectorForFunction(NSClassFromString(@"IndigoSessionController"), @selector(additionalEnvironment), (IMP)IndigoSessionController_additionalEnvironment);
+
   // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
 }

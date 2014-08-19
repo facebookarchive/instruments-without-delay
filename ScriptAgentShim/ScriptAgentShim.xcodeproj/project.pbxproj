@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2862845116DD5DDE00EE287B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2862845016DD5DDE00EE287B /* Foundation.framework */; };
 		28D7A49A16DDA3FB00569B9E /* ScriptAgentShim.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7A49916DDA3FB00569B9E /* ScriptAgentShim.m */; };
+		9190606A19C8747100C97BA7 /* SwizzleSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9190606919C8747100C97BA7 /* SwizzleSelector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,9 +17,10 @@
 		286283DE16DD198400EE287B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		286283DF16DD198400EE287B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		286283E016DD198400EE287B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ScriptAgentShim.xcconfig; sourceTree = "<group>"; };
 		2862845016DD5DDE00EE287B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		28D7A49916DDA3FB00569B9E /* ScriptAgentShim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptAgentShim.m; sourceTree = "<group>"; };
+		9190606919C8747100C97BA7 /* SwizzleSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SwizzleSelector.m; path = ../Common/SwizzleSelector.m; sourceTree = "<group>"; };
+		91C5FD5A199F8D3E007DA8CD /* ScriptProcessor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptProcessor.framework; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.0.sdk/Developer/Library/PrivateFrameworks/ScriptProcessor.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +38,7 @@
 		286283CF16DD198400EE287B = {
 			isa = PBXGroup;
 			children = (
-				2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */,
+				9190606B19C8748200C97BA7 /* Common */,
 				28D7A49816DDA3FB00569B9E /* ScriptAgentShim */,
 				286283DA16DD198400EE287B /* Frameworks */,
 				286283D916DD198400EE287B /* Products */,
@@ -54,6 +56,7 @@
 		286283DA16DD198400EE287B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91C5FD5A199F8D3E007DA8CD /* ScriptProcessor.framework */,
 				2862845016DD5DDE00EE287B /* Foundation.framework */,
 				286283DD16DD198400EE287B /* Other Frameworks */,
 			);
@@ -76,6 +79,14 @@
 				28D7A49916DDA3FB00569B9E /* ScriptAgentShim.m */,
 			);
 			path = ScriptAgentShim;
+			sourceTree = "<group>";
+		};
+		9190606B19C8748200C97BA7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9190606919C8747100C97BA7 /* SwizzleSelector.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9190606A19C8747100C97BA7 /* SwizzleSelector.m in Sources */,
 				28D7A49A16DDA3FB00569B9E /* ScriptAgentShim.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +160,6 @@
 /* Begin XCBuildConfiguration section */
 		286283E716DD198400EE287B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
@@ -180,7 +191,6 @@
 		};
 		286283E816DD198400EE287B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
@@ -206,29 +216,36 @@
 		};
 		286283EA16DD198400EE287B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.0.sdk/Developer/Library/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = ScriptAgentShim;
-				"VALID_ARCHS[sdk=iphoneos7.0]" = x86_64;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
 		286283EB16DD198400EE287B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2862844F16DD5D6000EE287B /* ScriptAgentShim.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.0.sdk/Developer/Library/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ScriptAgentShim;
-				"VALID_ARCHS[sdk=iphoneos7.0]" = x86_64;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

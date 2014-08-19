@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281BA0161662CC13000DF4AB /* dyld-interposing.h in Headers */ = {isa = PBXBuildFile; fileRef = 281B9F901662CC13000DF4AB /* dyld-interposing.h */; };
 		2834798D16E177BF003C3B77 /* SimShim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834798C16E177BF003C3B77 /* SimShim.m */; };
-		2834799016E177D9003C3B77 /* ArrayOfStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 2834798E16E177D9003C3B77 /* ArrayOfStrings.h */; };
-		2834799116E177D9003C3B77 /* ArrayOfStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2834798F16E177D9003C3B77 /* ArrayOfStrings.m */; };
+		9190606D19C874CC00C97BA7 /* SwizzleSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9190606C19C874CC00C97BA7 /* SwizzleSelector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,10 +17,8 @@
 		281B9F1D1662CAF5000DF4AB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		281B9F1E1662CAF5000DF4AB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		281B9F1F1662CAF5000DF4AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		281B9F901662CC13000DF4AB /* dyld-interposing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dyld-interposing.h"; sourceTree = "<group>"; };
 		2834798C16E177BF003C3B77 /* SimShim.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimShim.m; sourceTree = "<group>"; };
-		2834798E16E177D9003C3B77 /* ArrayOfStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayOfStrings.h; sourceTree = "<group>"; };
-		2834798F16E177D9003C3B77 /* ArrayOfStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayOfStrings.m; sourceTree = "<group>"; };
+		9190606C19C874CC00C97BA7 /* SwizzleSelector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwizzleSelector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +72,7 @@
 		281B9F391662CC13000DF4AB /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2834798E16E177D9003C3B77 /* ArrayOfStrings.h */,
-				2834798F16E177D9003C3B77 /* ArrayOfStrings.m */,
-				281B9F901662CC13000DF4AB /* dyld-interposing.h */,
+				9190606C19C874CC00C97BA7 /* SwizzleSelector.m */,
 			);
 			name = Common;
 			path = ../Common;
@@ -99,8 +93,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				281BA0161662CC13000DF4AB /* dyld-interposing.h in Headers */,
-				2834799016E177D9003C3B77 /* ArrayOfStrings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9190606D19C874CC00C97BA7 /* SwizzleSelector.m in Sources */,
 				2834798D16E177BF003C3B77 /* SimShim.m in Sources */,
-				2834799116E177D9003C3B77 /* ArrayOfStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

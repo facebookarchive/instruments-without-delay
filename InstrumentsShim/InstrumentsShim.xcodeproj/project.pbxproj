@@ -10,8 +10,7 @@
 		286283F916DD199C00EE287B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286283F816DD199C00EE287B /* Cocoa.framework */; };
 		2862840316DD199C00EE287B /* InstrumentsShim.m in Sources */ = {isa = PBXBuildFile; fileRef = 2862840216DD199C00EE287B /* InstrumentsShim.m */; };
 		2862844C16DD5B4B00EE287B /* dyld-interposing.h in Headers */ = {isa = PBXBuildFile; fileRef = 2862844916DD5B4B00EE287B /* dyld-interposing.h */; };
-		28D7A49D16DDAC3900569B9E /* ArrayOfStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 28D7A49B16DDAC3900569B9E /* ArrayOfStrings.h */; };
-		28D7A49E16DDAC3900569B9E /* ArrayOfStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7A49C16DDAC3900569B9E /* ArrayOfStrings.m */; };
+		91BAC24519C3220800AABBE3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BAC24419C3220800AABBE3 /* CoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +21,8 @@
 		286283FD16DD199C00EE287B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2862840216DD199C00EE287B /* InstrumentsShim.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstrumentsShim.m; sourceTree = "<group>"; };
 		2862844916DD5B4B00EE287B /* dyld-interposing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dyld-interposing.h"; sourceTree = "<group>"; };
-		28D7A49B16DDAC3900569B9E /* ArrayOfStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayOfStrings.h; sourceTree = "<group>"; };
-		28D7A49C16DDAC3900569B9E /* ArrayOfStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayOfStrings.m; sourceTree = "<group>"; };
+		91BAC24219C1F33900AABBE3 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		91BAC24419C3220800AABBE3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BAC24519C3220800AABBE3 /* CoreServices.framework in Frameworks */,
 				286283F916DD199C00EE287B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +59,8 @@
 		286283F716DD199C00EE287B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91BAC24419C3220800AABBE3 /* CoreServices.framework */,
+				91BAC24219C1F33900AABBE3 /* ServiceManagement.framework */,
 				286283F816DD199C00EE287B /* Cocoa.framework */,
 				286283FA16DD199C00EE287B /* Other Frameworks */,
 			);
@@ -86,8 +88,6 @@
 		2862844816DD5B4B00EE287B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				28D7A49B16DDAC3900569B9E /* ArrayOfStrings.h */,
-				28D7A49C16DDAC3900569B9E /* ArrayOfStrings.m */,
 				2862844916DD5B4B00EE287B /* dyld-interposing.h */,
 			);
 			name = Common;
@@ -102,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2862844C16DD5B4B00EE287B /* dyld-interposing.h in Headers */,
-				28D7A49D16DDAC3900569B9E /* ArrayOfStrings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2862840316DD199C00EE287B /* InstrumentsShim.m in Sources */,
-				28D7A49E16DDAC3900569B9E /* ArrayOfStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

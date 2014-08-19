@@ -4,6 +4,8 @@ __instruments-without-delay__ fixes the 1-second delay problem when using `UIAHo
 
 If you're using Instruments to drive UI integration tests (e.g. with [ios-driver](https://github.com/freynaud/ios-driver)), this hack can significantly speed up testing.
 
+__NOTE__: For pre-Xcode 6, build from e4e474c7e9559bfc34724b3338c56b28b3390cd2 as Xcode 6 support introduced breaking changes.
+
 
 ### Usage
 
@@ -17,4 +19,4 @@ Under the `build` directory, you'll have a new `instruments` script.  Use it in 
 
 ### How it works
 
-Instruments launches UIAutomation scripts in the iOS Simulator with a program called __ScriptAgent__.  Actually, Instruments launches a small helper program called __sim__, which in turn launches __ScriptAgent__.  ScriptAgent is what actually links __UIAutomation.framework__ and runs the scripts, so we inject a library into ScriptAgent that swizzles out `performTaskWithPathArgumentsTimeout` with our own implementation that has no 1 second delay.
+Instruments launches UIAutomation scripts in the iOS Simulator with a program called __ScriptAgent__.  Actually, Instruments launches the __iOS Simulator__, which starts up the whole Simulator environment. Eventually, __DTMobileIS__ is started up which finally starts launches __ScriptAgent__.  ScriptAgent is what actually links __UIAutomation.framework__ and runs the scripts, so we inject a library into ScriptAgent that swizzles out `performTaskWithPathArgumentsTimeout` with our own implementation that has no 1 second delay.
