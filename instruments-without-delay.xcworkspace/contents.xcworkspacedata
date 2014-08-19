@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DTMobileISShim/DTMobileISShim.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SimShim/SimShim.xcodeproj">
    </FileRef>
    <FileRef
@@ -24,6 +27,12 @@
       </FileRef>
       <FileRef
          location = "group:ArrayOfStrings.m">
+      </FileRef>
+      <FileRef
+         location = "group:SwizzleSelector.h">
+      </FileRef>
+      <FileRef
+         location = "group:SwizzleSelector.m">
       </FileRef>
    </Group>
 </Workspace>

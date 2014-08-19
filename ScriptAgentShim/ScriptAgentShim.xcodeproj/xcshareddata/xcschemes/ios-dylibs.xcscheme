@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0600"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "NO"
-      buildImplicitDependencies = "NO">
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "286283F416DD199C00EE287B"
-               BuildableName = "InstrumentsShim.dylib"
-               BlueprintName = "InstrumentsShim"
-               ReferencedContainer = "container:InstrumentsShim.xcodeproj">
+               BlueprintIdentifier = "286283D716DD198400EE287B"
+               BuildableName = "ScriptAgentShim.dylib"
+               BlueprintName = "ScriptAgentShim"
+               ReferencedContainer = "container:ScriptAgentShim.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,24 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2862841916DD4E4A00EE287B"
-               BuildableName = "TestApp.app"
-               BlueprintName = "TestApp"
-               ReferencedContainer = "container:../TestApp/TestApp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "281B9F161662CAF5000DF4AB"
-               BuildableName = "SimShim.dylib"
-               BlueprintName = "SimShim"
-               ReferencedContainer = "container:../SimShim/SimShim.xcodeproj">
+               BlueprintIdentifier = "91B432BC19995B4A0048E023"
+               BuildableName = "DTMobileISShim.dylib"
+               BlueprintName = "DTMobileISShim"
+               ReferencedContainer = "container:../DTMobileISShim/DTMobileISShim.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -60,16 +46,16 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "286283F416DD199C00EE287B"
-            BuildableName = "InstrumentsShim.dylib"
-            BlueprintName = "InstrumentsShim"
-            ReferencedContainer = "container:InstrumentsShim.xcodeproj">
+            BlueprintIdentifier = "286283D716DD198400EE287B"
+            BuildableName = "ScriptAgentShim.dylib"
+            BlueprintName = "ScriptAgentShim"
+            ReferencedContainer = "container:ScriptAgentShim.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
@@ -79,10 +65,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "286283F416DD199C00EE287B"
-            BuildableName = "InstrumentsShim.dylib"
-            BlueprintName = "InstrumentsShim"
-            ReferencedContainer = "container:InstrumentsShim.xcodeproj">
+            BlueprintIdentifier = "286283D716DD198400EE287B"
+            BuildableName = "ScriptAgentShim.dylib"
+            BlueprintName = "ScriptAgentShim"
+            ReferencedContainer = "container:ScriptAgentShim.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -97,10 +83,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "286283F416DD199C00EE287B"
-            BuildableName = "InstrumentsShim.dylib"
-            BlueprintName = "InstrumentsShim"
-            ReferencedContainer = "container:InstrumentsShim.xcodeproj">
+            BlueprintIdentifier = "286283D716DD198400EE287B"
+            BuildableName = "ScriptAgentShim.dylib"
+            BlueprintName = "ScriptAgentShim"
+            ReferencedContainer = "container:ScriptAgentShim.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
