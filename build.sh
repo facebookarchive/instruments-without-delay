@@ -31,7 +31,7 @@ if [[ $1 == "test" ]]; then
   OUTPUT_DIR=$(/usr/bin/mktemp -d -t trace)
   pushd $OUTPUT_DIR
   $BUILD_OUTPUT_DIR/instruments \
-    -t "$XCODE_PATH"/../Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/Automation.tracetemplate \
+    -t "$XCODE_PATH"/../Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.xrplugin/Contents/Resources/Automation.tracetemplate \
     $BUILD_OUTPUT_DIR/TestApp.app \
     -e UIASCRIPT $TEST_JS
   popd
