@@ -105,9 +105,11 @@ def get_iphonesimulator_sdk_versions_for_arch(developer_dir, arch):
         'Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator*.sdk'))
     sdk_paths.sort()
     sdk_names = [os.path.basename(sdk_path) for sdk_path in sdk_paths]
-    sdk_versions = [
-        re.match(r'iPhoneSimulator(.+?)\.sdk', sdk_name).group(1) for sdk_name
-        in sdk_names]
+    sdk_versions = [];
+    for sdk_name in sdk_names:
+        sdk_match = re.match(r'iPhoneSimulator(.+?)\.sdk', sdk_name)
+        if sdk_match != None:
+            sdk_versions.append(sdk_match.group(1))
 
     # Only 7.0+ supports x86_64 builds.
     if arch == 'x86_64':

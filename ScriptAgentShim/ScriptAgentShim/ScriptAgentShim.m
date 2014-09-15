@@ -19,6 +19,8 @@
 #import <objc/message.h>
 
 // NSTask isn't public in the iOS version of the headers, so we include it here.
+
+#if TARGET_OS_IPHONE
 @interface NSTask : NSObject
 - (void)setLaunchPath:(NSString *)path;
 - (void)setArguments:(NSArray *)arguments;
@@ -43,7 +45,8 @@
 - (int)terminationStatus;
 - (void)waitUntilExit;
 @end
-
+#endif
+ 
 static NSDictionary *LaunchTaskAndCaptureOutput(NSTask *task) {
   NSPipe *stdoutPipe = [NSPipe pipe];
   NSFileHandle *stdoutHandle = [stdoutPipe fileHandleForReading];
