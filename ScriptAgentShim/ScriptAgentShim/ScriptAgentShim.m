@@ -119,6 +119,15 @@ static id UIAHost_performTaskWithPath(id self, SEL cmd, id path, id arguments, i
   return result;
 }
 
+// This swizzle is to fix the `UIATarget.localTarget().deactivateAppForDuration(..)` API.
+// Apple's implementation backgrounds the app and then makes sure that SpringBoard is active.
+// Before checking the current pid, it waits a second which is not long enough for the pid to change.
+// But, it is long enough to reactivate the app, so we assume the call succeeds.
+static BOOL UIATarget_deactivateApp(id self, SEL _cmd) {
+  [self __UIATarget_deactivateApp];
+  return YES;
+}
+
 // This swizzle is make ScriptAgent way faster, as each call to its logger does a [NSUserDefaults boolForKey:]
 // which in aggregate, takes a bunch of time. (rdar://18062172)
 static BOOL NSUserDefaults_boolForKey(id self, SEL _cmd, NSString *key) {
@@ -131,9 +140,13 @@ static BOOL NSUserDefaults_boolForKey(id self, SEL _cmd, NSString *key) {
 
 __attribute__((constructor)) static void EntryPoint()
 {
+  //NSLog(@"Built at %s %s", __DATE__, __TIME__);
+
   SwizzleSelectorForFunction(NSClassFromString(@"UIAHost"),
                              @selector(performTaskWithPath:arguments:timeout:),
                              (IMP)UIAHost_performTaskWithPath);
+
+  SwizzleSelectorForFunction(NSClassFromString(@"UIATarget"), @selector(deactivateApp), (IMP)UIATarget_deactivateApp);
 
   SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
   
