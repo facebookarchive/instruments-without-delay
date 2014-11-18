@@ -28,7 +28,7 @@ if [[ $1 == "test" ]]; then
   pushd $OUTPUT_DIR
   $BUILD_OUTPUT_DIR/instruments \
     -t "$XCODE_PATH"/../Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.*/Contents/Resources/Automation.tracetemplate \
-    -w "iPhone 5s (8.1 Simulator)" \
+    -w "iPhone 5s (8." \
     $BUILD_OUTPUT_DIR/TestApp.app \
     -e UIASCRIPT $TEST_JS
   popd
