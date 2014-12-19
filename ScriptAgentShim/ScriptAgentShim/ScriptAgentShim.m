@@ -138,6 +138,20 @@ static BOOL NSUserDefaults_boolForKey(id self, SEL _cmd, NSString *key) {
   return [self __NSUserDefaults_boolForKey:key];
 }
 
+static BOOL UIATarget_tapRequiredObject(id self, SEL _cmd, id object, double tapCount, double touchCount) {
+  for (int i=0; i<5; i++) {
+    BOOL success = [self __UIATarget__tapRequiredObject:object tapCount:tapCount touchCount:touchCount];
+    
+    if (success) {
+      return YES;
+    }
+    
+    NSLog(@"Delaying due to failed tapRequiredObject: iteration %i", i);
+    [self delayForTimeInterval:0.1];
+  }
+  return NO;
+}
+
 __attribute__((constructor)) static void EntryPoint()
 {
   //NSLog(@"Built at %s %s", __DATE__, __TIME__);
@@ -148,6 +162,8 @@ __attribute__((constructor)) static void EntryPoint()
 
   SwizzleSelectorForFunction(NSClassFromString(@"UIATarget"), @selector(deactivateApp), (IMP)UIATarget_deactivateApp);
 
+  SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
+  
   SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
   
   // Don't cascade into any other programs started.
