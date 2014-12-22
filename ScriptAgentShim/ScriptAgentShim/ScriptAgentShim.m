@@ -164,8 +164,8 @@ __attribute__((constructor)) static void EntryPoint()
 
   SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
   
-  SwizzleSelectorForFunction(NSClassFromString(@"NSUserDefaults"), @selector(boolForKey:), (IMP)NSUserDefaults_boolForKey);
-  
+  SwizzleSelectorForFunction(NSClassFromString(@"UIATarget"), @selector(_tapRequiredObject:tapCount:touchCount:), (IMP)UIATarget_tapRequiredObject);
+
   // Don't cascade into any other programs started.
   unsetenv("DYLD_INSERT_LIBRARIES");
 }
