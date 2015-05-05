@@ -15,7 +15,6 @@
 //
 
 #import <spawn.h>
-#import <sys/uio.h>
 #import "../../Common/dyld-interposing.h"
 #import "../../Common/ArrayOfStrings.h"
 
@@ -58,29 +57,6 @@ static int _posix_spawn(pid_t *pid,
   return result;
 }
 DYLD_INTERPOSE(_posix_spawn, posix_spawn);
-
-// TODO: Insert giant ASCII clown right here.
-// Instruments can't handle writev's of larger than 8KB. We really shouldn't
-// be fixing this here but it's way too much effort to bug all the consumers
-// and we have to rush for a deadline (classic clowniness).
-static ssize_t _writev(int fildes, const struct iovec *iov, int iovcnt)
-{
-  // Limiting scope here, but the only known case of this for us is when
-  // DDLog tries writing larger than 8KB, so let's handle that case.
-  if (iovcnt == 2 && iov[0].iov_len >= 8096) {
-    struct iovec iovv[2];
-    
-    iovv[0].iov_base = iov[0].iov_base;
-    iovv[0].iov_len = 8096;
-    iovv[1].iov_base = iov[1].iov_base;
-    iovv[1].iov_len = iov[1].iov_len;
-    return writev(fildes, iovv, iovcnt);
-  }
-  
-  return writev(fildes, iov, iovcnt);
-}
-DYLD_INTERPOSE(_writev, writev);
-
 
 __attribute__((constructor)) static void EntryPoint(void) {
   // Don't cascade into any other programs started.
