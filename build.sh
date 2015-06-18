@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -x
 cd `dirname $0`
 
 BUILD_OUTPUT_DIR=$(echo `pwd`/build)
@@ -23,12 +24,17 @@ cp instruments $BUILD_OUTPUT_DIR/instruments
 if [[ $1 == "test" ]]; then
   TEST_JS=$(echo `pwd`/test.js)
   XCODE_PATH=$(xcode-select --print-path)
-
   OUTPUT_DIR=$(/usr/bin/mktemp -d -t trace)
+  if [[ -n $2 ]]; then
+    SIMULATOR_NAME="$2"
+  else
+    SIMULATOR_NAME="iPhone 5 (8."
+  fi
+
   pushd $OUTPUT_DIR
   $BUILD_OUTPUT_DIR/instruments \
     -t "$XCODE_PATH"/../Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.*/Contents/Resources/Automation.tracetemplate \
-    -w "iPhone 5s (8." \
+    -w $SIMULATOR_NAME \
     $BUILD_OUTPUT_DIR/TestApp.app \
     -e UIASCRIPT $TEST_JS
   popd
