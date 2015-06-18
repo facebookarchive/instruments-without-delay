@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -e
-set -x
 cd `dirname $0`
 
 BUILD_OUTPUT_DIR=$(echo `pwd`/build)
