@@ -15,6 +15,12 @@ Build and run the test:
 ./build.sh test
 ```
 
+The simulator identifier/name can optionally be added as an argument:
+
+```
+./build.sh test D82D8D7B-5253-3300-B083-B6F739F68355
+```
+
 Under the `build` directory, you'll have a new `instruments` script.  Use it in place of `/usr/bin/instruments`.
 
 ### How it works
