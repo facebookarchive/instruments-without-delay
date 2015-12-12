@@ -37,7 +37,9 @@ typedef struct LSApplicationParameters_V1 LSApplicationParameters_V1;
 
 id _LSOpenApplicationURL(NSURL *url, LSLaunchFlags *launchFlags, const LSApplicationParameters_V1 *appParams);
 static id __LSOpenApplicationURL(NSURL *url, LSLaunchFlags *launchFlags, LSApplicationParameters_V1 *appParams) {
-  if ([[url absoluteString] rangeOfString:@"iOS%20Simulator"].location != NSNotFound) {
+  
+  NSSet *simulatorApps = [NSSet setWithArray:@[@"iOS Simulator.app", @"Simulator.app"]];
+  if ([simulatorApps containsObject:[[url pathComponents] lastObject]]) {
     NSMutableDictionary *newEnvironment = [NSMutableDictionary dictionary];
     if (appParams->environment) {
       newEnvironment = [NSMutableDictionary dictionaryWithDictionary:appParams->environment];
